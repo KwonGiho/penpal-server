@@ -1,21 +1,33 @@
 package com.example.demo.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Created by kwongiho on 2018. 1. 13..
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
+@Getter
+@Setter
 public class PenpalResponse<T> {
     private int code;
     private String status;
     private T data;
+
+    public PenpalResponse() {
+    }
+
+    public PenpalResponse(int code, String status) {
+        this.code = code;
+        this.status = status;
+    }
+
+    public PenpalResponse(int code, String status, T data) {
+        this.code = code;
+        this.status = status;
+        this.data = data;
+    }
 
     @Override
     public String toString() {
