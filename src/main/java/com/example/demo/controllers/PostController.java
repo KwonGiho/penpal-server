@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.dto.Post;
 import com.example.demo.repository.PostRepository;
 import com.example.demo.request.PostNewRequest;
 import com.example.demo.response.PenpalResponse;
@@ -15,23 +16,30 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/post")
 public class PostController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
-    private final String KEY = "PENPAL_POST";
 
     @Autowired
     private PostRepository postRepository;
+    /*
+    private int postId;
+    private String title;
+    private String content;
+    private long writtenDate;
+    private String userId;
+    */
 
     @PostMapping
     public PenpalResponse<?> newPost(@RequestBody PostNewRequest body) {
         logger.info("POST /api/v1/post : {}",body);
+        Post post = postRepository.savePost(new Post(1,body.getTitle(),body.getContent(),System.currentTimeMillis(),"giho"));
 
-
-        return new PenpalResponse<>(200,"SUCCESS",body);
+        return new PenpalResponse<>(200,"SUCCESS",post);
     }
 
     @GetMapping("/{postId}")
     public PenpalResponse<?> getPost(@PathVariable int postId) {
         logger.info("GET /api/v1/post/{} ",postId);
-        return new PenpalResponse<>(200,"SUCCESS",postId);
+        Post post = postRepository.findPost(postId);
+        return new PenpalResponse<>(200,"SUCCESS",post);
     }
 
     @PutMapping

@@ -17,6 +17,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 public class PostNewRequest {
     private String title;
     private String content;
+    private String userId;
 
     @Override
     public String toString() {
