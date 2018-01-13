@@ -4,7 +4,6 @@ package com.example.demo.request;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -18,6 +17,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 public class PostNewRequest {
     private String title;
     private String content;
+    private String userId;
 
     @Override
     public String toString() {
