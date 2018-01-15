@@ -30,8 +30,8 @@ public class RedisConfig {
     }
 
     @Bean
-    public RedisTemplate<Integer, Object> redisTemplate() {
-        final RedisTemplate<Integer, Object> template = new RedisTemplate<Integer,Object>();
+    public RedisTemplate<String, Object> redisTemplate() {
+        final RedisTemplate<String, Object> template = new RedisTemplate<String,Object>();
         template.setConnectionFactory(jedisConnectionFactory());
         template.setValueSerializer(new GenericToStringSerializer<>(Post.class));
         return template;
